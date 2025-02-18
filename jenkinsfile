@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your code from the repository
+                checkout scm
+            }
+        }
+        
+        stage('Extract package.json Data') {
+            steps {
+                    script {
+                            // Read the package.json file
+                            def packageJson = readJSON file: 'package.json'
+                    
+                            // Extract the name and version
+                            def name = packageJson.name
+                            def version = packageJson.version
+                    
+                            // Print the values to the console
+                            echo "Package Name: ${name}"
+                            echo "Package Version: ${version}"
+                    
+                          // You can also set
+                    }
+                    
+            }
+                
